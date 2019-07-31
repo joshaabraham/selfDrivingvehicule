@@ -1,5 +1,6 @@
 from Models.Client import Client
 from  Models.Transaction import Transaction
+from Models.block import Block
 
 
 transactions = []
@@ -10,9 +11,14 @@ Ramesh = Client()
 Seema = Client()
 Vijay = Client()
 
-print ('print 1 ') 
+print ('print 1 : Creation Clients') 
 print (Dinesh.identity)
 
+t0 = Transaction (
+   "Genesis",
+   Dinesh.identity,
+   500.0
+)
 t1 = Transaction(
    Dinesh,
    Ramesh.identity,
@@ -83,12 +89,20 @@ t10 = Transaction(
 t10.sign_transaction()
 transactions.append(t10)
 
-print ('print 2 ') 
+print ('print 2 : creating Genesis block ') 
+block0 = Block()
+block0.previous_block_hash = None
+Nonce = None
+block0.verified_transactions.append (t0)
+digest = hash (block0)
+last_block_hash = digest
+
+print ('print 3 : display transations ')
 
 
-signature = t.sign_transaction()
+# signature = t10.sign_transaction()
 
 for transaction in transactions:
-   display_transaction (transaction)
-   print ('--------------')
+    Transaction.display_transaction(transaction)
+print ('--------------')
 
