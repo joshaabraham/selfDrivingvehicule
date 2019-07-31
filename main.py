@@ -1,6 +1,7 @@
 from Models.Client import Client
-from  Models.Transaction import Transaction
+from Models.Transaction import Transaction
 from Models.block import Block
+from Models.BlockChain import BlockChain
 
 
 transactions = []
@@ -102,7 +103,12 @@ print ('print 3 : display transations ')
 
 # signature = t10.sign_transaction()
 
-for transaction in transactions:
-    Transaction.display_transaction(transaction)
-print ('--------------')
+# for transaction in transactions:
+#     Transaction.display_transaction(transaction)
+# print ('--------------')
+
+blockChain = BlockChain()
+blockChain.TPCoins.append(block0)
+blockChain.dump_blockchain(blockChain.TPCoins)
+
 
